@@ -1,0 +1,23 @@
+node_modules
+*.iml
+target
+
+# intelliJ IDEA files
+.idea
+
+# vs code files
+.vscode/
+__pycache__
+.pytest_cache/
+
+# macOS files 
+.DS_Store
+
+# env variables
+frontend/src/private/*
+
+# virtual environment
+env/
+
+# backend test files
+backend/src/data/tmdb_5000_test.csv
