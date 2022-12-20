@@ -2,19 +2,23 @@ import Navbar from "../components/Navbar";
 import Search from "../components/Search";
 import MovieCard from "../components/MovieCard";
 import Recommend from "../components/Recommend";
-import { HStack } from '@chakra-ui/react'
+import { Center, HStack } from '@chakra-ui/react'
 
 function Form() {
     return (
         <div>
             <Navbar />
-            <Search />
-            <HStack>
-                <MovieCard />
-                <MovieCard />
-                <MovieCard />
-            </HStack>
-            <Recommend />
+            <main>
+                <Search />
+                <Center>
+                    <HStack>
+                        <MovieCard />
+                        <MovieCard />
+                        <MovieCard />
+                    </HStack>
+                </Center>
+                <Recommend />
+            </main>
         </div>
     )
 }

@@ -1,8 +1,10 @@
-import { Input, Button } from '@chakra-ui/react'
+import { Center, Input } from '@chakra-ui/react'
 
 function Search() {
     return (
-        <Input placeholder="Enter a movie title" />
+        <Center>
+            <Input placeholder="Enter a movie title" width="80%" mx="auto" />
+        </Center>
     )
 }
 

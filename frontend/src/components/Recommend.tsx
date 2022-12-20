@@ -1,8 +1,10 @@
-import { Button } from '@chakra-ui/react'
+import { Center, Button } from '@chakra-ui/react'
 
 function Recommend() {
     return (
-        <Button>Recommend</Button>
+        <Center>
+            <Button>Recommend</Button>
+        </Center>
     )
 }
 
