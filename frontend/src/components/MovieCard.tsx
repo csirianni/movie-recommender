@@ -1,6 +1,12 @@
+import { Card, CardHeader, CardBody, Text } from '@chakra-ui/react'
+
 function MovieCard() {
     return (
-        <div>MovieCard</div>
+        <Card>
+            <CardHeader>
+                <Text>Casino Royale</Text>
+            </CardHeader>
+        </Card>
     )
 }
 

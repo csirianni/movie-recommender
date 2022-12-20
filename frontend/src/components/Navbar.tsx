@@ -1,6 +1,10 @@
+import { Text } from '@chakra-ui/react'
+
 function Navbar() {
     return (
-        <div>Movie Recommender</div>
+        <Text>
+            Movie Recommender
+        </Text>
     )
 }
 

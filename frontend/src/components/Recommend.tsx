@@ -1,6 +1,8 @@
+import { Button } from '@chakra-ui/react'
+
 function Recommend() {
     return (
-        <input type="submit"></input>
+        <Button>Recommend</Button>
     )
 }
 
