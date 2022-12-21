@@ -23,6 +23,7 @@ function Form() {
     const [example1, setExample1] = useState<MovieMetaData>(placeholder)
     const [example2, setExample2] = useState<MovieMetaData>(placeholder)
     const [example3, setExample3] = useState<MovieMetaData>(placeholder)
+    const [exampleIDs, setExampleIDs] = useState<number[]>([])
     const [titlesToIds, setTitlesToIds] = useState(new Map())
 
     async function updateTitlesToIds() {
@@ -42,6 +43,7 @@ function Form() {
         }
 
         const movieID = titlesToIds.get(option.value)
+        setExampleIDs(prev => [...prev, movieID])
 
         let apiData = await fetchMovieData(movieID);
 
@@ -83,7 +85,7 @@ function Form() {
                         <MovieCard properties={example3} />
                     </HStack>
                 </Center>
-                <Recommend />
+                <Recommend exampleIDs={exampleIDs}/>
             </main>
         </div>
     )
