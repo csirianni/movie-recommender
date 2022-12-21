@@ -5,7 +5,7 @@ function Recommend() {
         <Center>
             <Button
                 position="absolute"
-                top="765">
+                top="700">
                 Recommend
             </Button>
         </Center>

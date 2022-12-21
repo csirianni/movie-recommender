@@ -85,7 +85,8 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
             if (value) {
                 setDisplayOptions(true);
                 setPartialResult(
-                    matchSorter(optionsCopy, value, { keys: ['label', 'value'] }),
+                    // NOTE: changed from options copy to options
+                    matchSorter(options, value, { keys: ['label', 'value'] }),
                 );
                 setInputValue(value);
             } else {
