@@ -5,12 +5,17 @@ import Recommend from "../components/Recommend";
 import { Center, HStack } from '@chakra-ui/react'
 import { useState } from "react";
 import { Option } from "../components/autocomplete/Autocomplete";
+import { MovieMetaData } from "../components/MovieCard";
 
 function Form() {
 
-    const [example1, setExample1] = useState("")
-    const [example2, setExample2] = useState("")
-    const [example3, setExample3] = useState("")
+    const placeholder: MovieMetaData = {
+        title: "Casino Royale"
+    }
+
+    const [example1, setExample1] = useState<MovieMetaData>(placeholder)
+    const [example2, setExample2] = useState<MovieMetaData>(placeholder)
+    const [example3, setExample3] = useState<MovieMetaData>(placeholder)
 
     let exampleCount = 0;
 
@@ -21,18 +26,20 @@ function Form() {
         }
 
         // convert option into movie metadata
-        const movieData = option.value;
+        const movieMetaData: MovieMetaData = {
+            title: option.value
+        }
 
         // update the state of the next movie card
         switch (exampleCount) {
             case 0:
-                setExample1(movieData);
+                setExample1(movieMetaData);
                 break;
             case 1:
-                setExample2(movieData);
+                setExample2(movieMetaData);
                 break;
             case 2:
-                setExample3(movieData);
+                setExample3(movieMetaData);
                 break;
             default:
                 return
@@ -49,9 +56,9 @@ function Form() {
                 <Search selectExample={selectExample} />
                 <Center>
                     <HStack position="absolute" top="125" zIndex="-1">
-                        <MovieCard title={example1} />
-                        <MovieCard title={example2} />
-                        <MovieCard title={example3} />
+                        <MovieCard movie={example1} />
+                        <MovieCard movie={example2} />
+                        <MovieCard movie={example3} />
                     </HStack>
                 </Center>
                 <Recommend />
