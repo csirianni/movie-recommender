@@ -11,7 +11,7 @@ function Form() {
             <main>
                 <Search />
                 <Center>
-                    <HStack>
+                    <HStack position="absolute" top="125" zIndex="-1">
                         <MovieCard />
                         <MovieCard />
                         <MovieCard />
