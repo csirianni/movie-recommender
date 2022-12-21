@@ -19,7 +19,6 @@ export type Option = {
 };
 
 export interface AutocompleteProps extends InputProps {
-    allowCreation?: boolean;
     bgHoverColor?: string;
     /** Optional prop for turning off the renderBadge function */
     disableRenderBadge?: boolean,
@@ -38,6 +37,7 @@ export interface AutocompleteProps extends InputProps {
     result: Option[];
     /** Callback to set the result */
     setResult: (options: Option[]) => void;
+    selectExample: (option: Option) => void;
 }
 
 const defaultRenderCheckIcon = (option: Option) => (
@@ -65,12 +65,12 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
             result,
             setResult,
             bgHoverColor,
-            allowCreation,
             notFoundText,
             renderBadge = defaultRenderBadge,
             disableRenderBadge = false,
             renderCheckIcon = defaultRenderCheckIcon,
             renderCreateIcon = defaultCreateIcon,
+            selectExample,
             ...rest
         }: AutocompleteProps,
         ref,
@@ -106,21 +106,6 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
         };
 
         const isOptionSelected = (option: Option) => result.filter((selectedOption) => selectedOption.value === option.value).length > 0;
-
-        const createOption = () => {
-            if (inputValue && allowCreation) {
-                const newOption: Option = {
-                    label: inputValue,
-                    value: inputValue,
-                };
-                setOptionsCopy([newOption, ...optionsCopy]);
-                selectOption(newOption);
-                setDisplayOptions(false);
-                if (inputRef && inputRef.current !== null) {
-                    inputRef.current.value = '';
-                }
-            }
-        };
 
         const selectOptionFromList = (option: Option) => {
             selectOption(option);
@@ -173,7 +158,10 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
                                 my={1}
                                 p={2}
                                 cursor="pointer"
-                                onClick={() => selectOptionFromList(option)}
+                                onClick={() => {
+                                    selectOptionFromList(option)
+                                    selectExample(option)
+                                }}
                             >
                                 <Flex align="center">
                                     {checkIcon(option)}
@@ -181,19 +169,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
                                 </Flex>
                             </ListItem>
                         ))}
-                        {!partialResult?.length && allowCreation && (
-                            <ListItem
-                                _hover={{ bg: bgHoverColor || 'gray.100' }}
-                                my={1}
-                                p={2}
-                                cursor="pointer"
-                                data-testid="create-option"
-                                onClick={() => createOption()}
-                            >
-                                <Flex align="center">{renderCreateIcon()}</Flex>
-                            </ListItem>
-                        )}
-                        {!partialResult?.length && !allowCreation && (
+                        {!partialResult?.length && (
                             <ListItem my={1} p={2} data-testid="not-found">
                                 <Flex align="center">{notFoundText}</Flex>
                             </ListItem>
@@ -208,6 +184,5 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
 Autocomplete.displayName = 'Autocomplete';
 
 Autocomplete.defaultProps = {
-    notFoundText: 'Not found',
-    allowCreation: true,
+    notFoundText: 'Not found'
 };

@@ -1,7 +1,11 @@
 import { Flex, Card, CardBody, Heading, Text, Image, Box, Center } from '@chakra-ui/react'
 import { MdStar } from "react-icons/md";
 
-function MovieCard() {
+type MovieCardProps = {
+    title: string
+}
+
+function MovieCard({ title }: MovieCardProps) {
     const properties = {
         title: "Avatar",
         overview: "In the 22nd century, a paraplegic Marine is dispatched to the moon Pandora on a unique mission, but becomes torn between following orders and protecting an alien civilization.",
@@ -18,7 +22,7 @@ function MovieCard() {
             <CardBody>
                 <Image src={properties.poster} width="20em" borderRadius='lg' />
                 <Heading>
-                    <Text>{properties.title}</Text>
+                    <Text>{title}</Text>
                 </Heading>
                 <Text fontSize="xs">{properties.overview}</Text>
                 <Flex align="center">

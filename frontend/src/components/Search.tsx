@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Flex } from '@chakra-ui/react'
 import { Autocomplete, Option } from './autocomplete/Autocomplete';
 
 const options = [
@@ -9,21 +8,28 @@ const options = [
     { value: 'css', label: 'CSS' },
 ];
 
+type SearchProps = {
+    selectExample: (option: Option) => void
+}
 
-function Search() {
-    const [result, setResult] = useState<Option[]>([]);
+
+function Search({ selectExample }: SearchProps) {
+    const [examples, setExamples] = useState<Option[]>([]);
 
     return (
-        <Autocomplete
-            options={options}
-            result={result}
-            setResult={(options: Option[]) => setResult(options)}
-            disableRenderBadge={true}
-            allowCreation={false}
-            placeholder="Enter a movie title"
-            width="100%"
-            position="relative"
-        />
+        <>
+            <Autocomplete
+                options={options}
+                result={examples}
+                setResult={(options: Option[]) => setExamples(options)}
+                selectExample={selectExample}
+                disableRenderBadge={true}
+                placeholder="Enter a movie title"
+                width="100%"
+                position="relative"
+            />
+            {examples.map(option => option.value)}
+        </>
     )
 }
 
