@@ -1,18 +1,23 @@
 import Navbar from "./Navbar";
 import Search from "./Search";
 import MovieCard from "./MovieCard";
-import Recommend from "./Recommend";
 import { Center, HStack } from '@chakra-ui/react'
 import { Flex, Box, Heading, FormControl, FormLabel, Input, Button, Stack } from '@chakra-ui/react'
 import { useState, useEffect } from "react";
 import { Option } from "./autocomplete/Autocomplete";
 import { MovieMetaData } from "./MovieCard";
 import { fetchMovieData, fetchTitlesToIds, fetchTitles } from "../controller/Data";
+import { getRecommendations } from "../controller/Recommendation";
 
+
+type FormProps = {
+    toggleShowRecommendation: () => void,
+    updateRecommendations: (exampleIDs: number[]) => void
+}
 
 let exampleCount = 0;
 
-function Form() {
+function Form({ toggleShowRecommendation, updateRecommendations }: FormProps) {
 
     const placeholder: MovieMetaData = {
         title: "",
@@ -47,6 +52,7 @@ function Form() {
         const movieID = titlesToIds.get(option.value)
         setExampleIDs(prev => [...prev, movieID])
 
+        // TODO: refactor this code to separate function
         let apiData = await fetchMovieData(movieID);
 
         // convert option into movie metadata
@@ -92,15 +98,18 @@ function Form() {
                                 <MovieCard properties={example3} />
                             </HStack>
                             <Center>
-                                <Button type="submit">
+                                <Button type="submit" onClick={async () => {
+                                    toggleShowRecommendation();
+                                    updateRecommendations(exampleIDs);
+                                }}>
                                     Recommend
                                 </Button>
                             </Center>
                         </Box>
                     </Center>
-                </form>
-            </Box>
-        </Flex>
+                </form >
+            </Box >
+        </Flex >
     )
 }
 

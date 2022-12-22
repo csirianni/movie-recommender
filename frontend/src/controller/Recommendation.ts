@@ -7,5 +7,6 @@ export async function getRecommendations(movieIDs: number[]) {
         },
         body: JSON.stringify({ "example1": movieIDs[0], "example2": movieIDs[1], "example3": movieIDs[2] })
     })
-    return await response.json()
+    const responseJSON = await response.json()
+    return responseJSON.data
 }

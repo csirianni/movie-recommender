@@ -10,7 +10,7 @@ type SearchProps = {
 function Search({ selectExample }: SearchProps) {
 
     const [titles, setTitles] = useState([""])
-    const [examples, setExamples] = useState<Option[]>([]);
+    const [selections, setSelections] = useState<Option[]>([]);
 
     async function updateTitles() {
         const response = await fetchTitles();
@@ -22,22 +22,17 @@ function Search({ selectExample }: SearchProps) {
 
     const options: Option[] = titles.map(title => { return { value: title, label: title } })
 
-    // console.log(options);
-
     return (
-        <>
-            <Autocomplete
-                options={options}
-                result={examples}
-                setResult={(options: Option[]) => setExamples(options)}
-                selectExample={selectExample}
-                disableRenderBadge={true}
-                placeholder="Avatar"
-                width="100%"
-                position="relative"
-            />
-            {/* {examples.map(option => option.value)} */}
-        </>
+        <Autocomplete
+            options={options}
+            result={selections}
+            setResult={(options: Option[]) => setSelections(options)}
+            selectExample={selectExample}
+            disableRenderBadge={true}
+            placeholder="Avatar"
+            width="100%"
+            position="relative"
+        />
     )
 }
 
