@@ -19,8 +19,8 @@ function MovieCard({ properties }: MovieCardProps) {
         <Card marginY={6} width="20em">
             <CardBody>
                 <Image src={properties.posterPath} width="20em" borderRadius='lg' />
-                <Heading>
-                    <Text>{properties.title}</Text>
+                <Heading size="md" noOfLines={1}>
+                    {properties.title}
                 </Heading>
                 {/* <Text fontSize="xs">{properties.overview}</Text> */}
                 <Flex align="center">

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import Form from "./views/Form";
+import Form from "./components/Form";
 
 // import `ChakraProvider` component
 import { ChakraProvider } from '@chakra-ui/react'
@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <ChakraProvider>
     <React.StrictMode>
-      <Form />
+      <App />
     </React.StrictMode>
   </ChakraProvider>
 );

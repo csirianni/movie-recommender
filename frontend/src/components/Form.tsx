@@ -1,12 +1,14 @@
-import Navbar from "../components/Navbar";
-import Search from "../components/Search";
-import MovieCard from "../components/MovieCard";
-import Recommend from "../components/Recommend";
+import Navbar from "./Navbar";
+import Search from "./Search";
+import MovieCard from "./MovieCard";
+import Recommend from "./Recommend";
 import { Center, HStack } from '@chakra-ui/react'
+import { Flex, Box, Heading, FormControl, FormLabel, Input, Button, Stack } from '@chakra-ui/react'
 import { useState, useEffect } from "react";
-import { Option } from "../components/autocomplete/Autocomplete";
-import { MovieMetaData } from "../components/MovieCard";
+import { Option } from "./autocomplete/Autocomplete";
+import { MovieMetaData } from "./MovieCard";
 import { fetchMovieData, fetchTitlesToIds, fetchTitles } from "../controller/Data";
+
 
 let exampleCount = 0;
 
@@ -74,20 +76,31 @@ function Form() {
     }
 
     return (
-        <div>
-            <Navbar />
-            <main>
-                <Search selectExample={selectExample} />
-                <Center>
-                    <HStack position="absolute" top="125" zIndex="-1">
-                        <MovieCard properties={example1} />
-                        <MovieCard properties={example2} />
-                        <MovieCard properties={example3} />
-                    </HStack>
-                </Center>
-                <Recommend exampleIDs={exampleIDs}/>
-            </main>
-        </div>
+        <Flex width="full" align="center" justifyContent="center">
+            <Box width="80%" my={4} textAlign="left">
+                <form>
+                    <FormControl>
+                        <FormLabel>Enter a movie title</FormLabel>
+                        <Search selectExample={selectExample} />
+                    </FormControl>
+
+                    <Center>
+                        <Box position="absolute" top="200" zIndex="-1">
+                            <HStack alignContent="center">
+                                <MovieCard properties={example1} />
+                                <MovieCard properties={example2} />
+                                <MovieCard properties={example3} />
+                            </HStack>
+                            <Center>
+                                <Button type="submit">
+                                    Recommend
+                                </Button>
+                            </Center>
+                        </Box>
+                    </Center>
+                </form>
+            </Box>
+        </Flex>
     )
 }
 

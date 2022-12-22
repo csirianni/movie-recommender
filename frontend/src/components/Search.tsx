@@ -32,11 +32,11 @@ function Search({ selectExample }: SearchProps) {
                 setResult={(options: Option[]) => setExamples(options)}
                 selectExample={selectExample}
                 disableRenderBadge={true}
-                placeholder="Enter a movie title"
+                placeholder="Avatar"
                 width="100%"
                 position="relative"
             />
-            {examples.map(option => option.value)}
+            {/* {examples.map(option => option.value)} */}
         </>
     )
 }
