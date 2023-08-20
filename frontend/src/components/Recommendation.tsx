@@ -14,7 +14,7 @@ export function Recommendation({ recommendations }: RecommendationProps) {
         overview: "",
         voteAverage: 0.0,
         voteCount: 0,
-        posterPath: ""
+        posterPath: "../../public/blank.png"
     };
 
     const [recommendation, setRecommendation] = useState<MovieMetaData>(placeholder);

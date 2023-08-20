@@ -19,6 +19,7 @@ function MovieCard({ properties }: MovieCardProps) {
         <Card marginY={6} width="20em">
             <CardBody>
                 <Image src={properties.posterPath} width="20em" borderRadius='lg' />
+                <Image src="" width="20em" borderRadius='lg' />
                 <Heading size="md" noOfLines={1}>
                     {properties.title}
                 </Heading>

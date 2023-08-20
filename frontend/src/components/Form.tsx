@@ -24,7 +24,7 @@ function Form({ toggleShowRecommendation, updateRecommendations }: FormProps) {
         overview: "",
         voteAverage: 0.0,
         voteCount: 0,
-        posterPath: ""
+        posterPath: "./blank.png"
     }
 
     const [example1, setExample1] = useState<MovieMetaData>(placeholder)
