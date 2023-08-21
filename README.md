@@ -1,5 +1,7 @@
 # Movie Recommender
 
+[![backend](https://github.com/csirianni/movie-recommender/actions/workflows/backend.yml/badge.svg)](https://github.com/csirianni/movie-recommender/actions/workflows/backend.yml)
+
 ## Overview
 
 Movie Recommender is a web application that computes movie recommendations based on user input. The user provides three movie examples through an autocomplete text input component. The title, rating, and movie poster of the selected examples are displayed on the page. Then, the user clicks the Recommend button and receives recommendations according to content-based filtering of the [TMBD 5000 Movie Dataset](https://www.kaggle.com/tmdb/tmdb-movie-metadata?select=tmdb_5000_movies.csv). The default [similarity metric](https://en.wikipedia.org/wiki/Similarity_measure) is [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity), but other metrics are selectable in the backend.
