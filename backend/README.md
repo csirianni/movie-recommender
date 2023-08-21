@@ -1,10 +1,8 @@
 # Backend
 
-Cedric Sirianni
-
 ## About
 
-This is the backend for the CS32 Movie Recommender project. It serves movie recommendations using the REST API architecture. There are two available endpoints:
+The backend serves movie recommendations using the REST API architecture. There are two available endpoints:
 
 1. `/recommendations` : This endpoint provides a list of ten movie recommendations given three examples provided via a POST request.
 2. `/title_to_ids`: This endpoint provides a dictionary containing the title and id of each movie in the dataset.
@@ -16,6 +14,8 @@ To run the backend server, use your preferred terminal to `cd` into `/backend` a
 ```console
 python3 -m venv env
 ```
+
+> [venv](https://docs.python.org/3/library/venv.html) is the built-in Python module that supports creating virtual environments. `env` is name of the folder that will be created in the present working directory.
 
 Then, activate the virtual environment via
 
@@ -58,7 +58,7 @@ As a developer, there are a few ways for you to customize the recommendation alg
     recommender = Recommender(features, path) # very fast
     ```
 
-    > Note that keyword arguments are required when passing in only the filepath.
+    > Note that keyword arguments are required if you choose to only pass in the filepath.
 
 3. You can choose your own distance metric using the pre-defined functions in `distance_metric.py`. For example, after importing `correlation_distance`,
 
