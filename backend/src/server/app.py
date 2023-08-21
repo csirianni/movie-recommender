@@ -33,9 +33,9 @@ def get_recommendations():
         raise BadRequestError
     # raise error if one or more of the examples are not an int
     if (
-        type(example1) is not int
-        or type(example2) is not int
-        or type(example3) is not int
+        not isinstance(example1, int)
+        or not isinstance(example2, int)
+        or not isinstance(example3, int)
     ):
         raise BadRequestError
     # produce recommendations

@@ -17,9 +17,9 @@ def test_titles_to_ids(client):
     response = client.get("http://127.0.0.1:5000/titles_to_ids/")
     for title, movie_id in response.json["data"].items():
         # check that each movie title is a str
-        assert type(title) == str
+        assert isinstance(title, str)
         # check that each movie id is an int
-        assert type(movie_id) == int
+        assert isinstance(movie_id, int)
         # check that each movie id is within the range of possible ids
         assert 5 <= movie_id <= 459488
 
@@ -39,7 +39,7 @@ def test_get_recommendations(client):
     assert len(data) == 10
     for movie_id in data:
         # check that each movie id is an int
-        assert type(movie_id) == int
+        assert isinstance(movie_id, int)
         # check that each movie id is within the range of possible movie ids
         assert 5 <= movie_id <= 459488
 

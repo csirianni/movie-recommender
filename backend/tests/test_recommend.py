@@ -27,7 +27,7 @@ def test_recommend():
     assert len(recommendations) == 10
     for movie_id in recommendations:
         # check that each movie id is an int
-        assert type(movie_id) == int
+        assert isinstance(movie_id, int)
         # check that each movie id is within the range of possible movie ids
         assert 5 <= movie_id <= 459488
 

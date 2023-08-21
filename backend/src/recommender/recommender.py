@@ -11,7 +11,8 @@ class Recommender:
     def __init__(self, features: set[Feature] = None, path: str = None):
         """Constructor for the Recommender class.
 
-        :param features: a set of features that will be considered in the recommendation algorithm
+        :param features: a set of features that will be considered in the recommendation
+            algorithm
         :param path: the filepath to read the dataframe data from
         """
         if path:
@@ -27,7 +28,8 @@ class Recommender:
         """Compute a list of recommendations given three movie examples.
 
         :param examples: a list of movie id examples
-        :param distance_metric: the function to compute the distance between the examples and each movie in the corpus
+        :param distance_metric: the function to compute the distance between the
+            examples and each movie in the corpus
         :return: a list of ten movie recommendations in the form of ids
         :raises ValueError: if any of the examples do not exist in the dataset
         """
@@ -42,7 +44,8 @@ class Recommender:
         corpus_count_matrix = count.fit_transform(self.movies["soup"])
 
         # find the index of each example movie
-        # [0] is used to select the first element from the output of index, an Int64Index
+        # [0] is used to select the first element from the output of index, an
+        # Int64Index
         example_indices = []
         for example in examples:
             index: int = self.movies.index[self.movies["id"] == example][0]
@@ -89,7 +92,8 @@ def construct_dataset(features: set[Feature] = None, path: str = None):
 
     :param features: the set of features to be included in the dataset, defaults to None
     :param path: the filepath to write the dataframe data to
-    :return: a dataframe with the movie and credits data merged and a soup column for recommendation
+    :return: a dataframe with the movie and credits data merged and a soup column for
+        recommendation
     """
     # set default features
     if features is None:
