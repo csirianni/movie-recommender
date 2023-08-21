@@ -22,7 +22,7 @@ In order to run the frontend, `cd` into `/frontend` and run
 npm start
 ```
 
-In order to run the backend, `cd` into the `/frontend` and run
+In order to run the backend, `cd` into the `/backend` and run
 
 ```console
 python3 -m src
